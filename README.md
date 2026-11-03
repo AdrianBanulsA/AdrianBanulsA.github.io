@@ -1,4 +1,4 @@
-# adrianbanulsa.github.io
+# Personal website and poster QR codes
 
 Source for my personal website, <https://adrianbanulsa.github.io/>, built with
 [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) and deployed
