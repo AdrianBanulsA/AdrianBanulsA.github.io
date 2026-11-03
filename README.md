@@ -1,21 +1,33 @@
-# Web personal y QR de pósteres
+# adrianbanulsa.github.io
 
-Web hecha con [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/), publicada en
-https://adrianbanulsa.github.io/ con GitHub Actions.
+Source for my personal website, <https://adrianbanulsa.github.io/>, built with
+[Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) and deployed
+with GitHub Actions on every push to `main`.
 
-## Añadir el QR de un póster
+It also hosts the QR codes I put on conference posters. Each code points to
+`/qr/<slug>/`, which logs the scan in [GoatCounter](https://www.goatcounter.com/)
+and then redirects to the paper.
 
-1. Edita `posters.yml` y añade una entrada con `slug` y `doi` (o `url`).
-2. Guarda los cambios (commit). En un par de minutos la web se actualiza sola.
-3. Descarga el QR desde https://adrianbanulsa.github.io/qr/
+## Adding a poster QR
 
-Cada QR abre `https://adrianbanulsa.github.io/qr/<slug>/`, que cuenta el escaneo
-en GoatCounter y redirige al paper. **No cambies ni borres un slug ya impreso.**
+1. Add an entry with a `slug` and a `doi` (or `url`) to `posters.yml`.
+2. Push. The site rebuilds in a couple of minutes.
+3. Download the SVG from <https://adrianbanulsa.github.io/qr/>.
 
-## Archivos importantes
+Don't rename or remove a slug once the poster has been printed.
 
-- `posters.yml`: los QR de los pósteres.
-- `mkdocs.yml`: nombre de la web, menú, enlaces y código de GoatCounter.
-- `docs/`: el contenido de la web en Markdown (`index.md`, `publications.md`).
-- `assets/logo.png`: logo opcional para el centro de los QR.
-- `docs/qr/`: se genera automáticamente; no pongas nada ahí a mano.
+## Layout
+
+- `posters.yml` – poster QR codes
+- `mkdocs.yml` – site config, navigation, links and GoatCounter code
+- `docs/` – page content (Markdown)
+- `assets/logo.png` – optional logo placed in the centre of the QR codes
+- `scripts/build_qr.py` – generates `docs/qr/` at build time (not tracked)
+
+## Local preview
+
+```bash
+pip install -r requirements.txt
+python scripts/build_qr.py
+mkdocs serve
+```

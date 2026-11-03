@@ -1,4 +1,4 @@
-site_name: Adrian Banuls
+site_name: Adrián Bañuls Arias
 site_url: https://adrianbanulsa.github.io/
 site_description: Research, publications and code.
 
@@ -35,15 +35,14 @@ nav:
   - Publications: publications.md
 
 extra:
-  # For analytics via Goatcounter
   goatcounter: "adrianbanuls"
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/AdrianBanulsA
     - icon: fontawesome/brands/orcid
-      link: https://orcid.org/0000-0000-0000-0000
+      link: https://orcid.org/0009-0004-8712-0431
     - icon: fontawesome/brands/google-scholar
-      link: https://scholar.google.com/
+      link: https://scholar.google.es/citations?user=P3HrRG8AAAAJ
 
 markdown_extensions:
   - attr_list

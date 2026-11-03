@@ -1,4 +1,4 @@
-/* Paleta propia: azul petróleo sobrio con acento ámbar */
+/* Colour palette */
 :root,
 [data-md-color-scheme="default"] {
   --md-primary-fg-color: #1f4a5a;
@@ -16,7 +16,7 @@
   --md-typeset-a-color: #7cc0d6;
 }
 
-/* Lista de publicaciones: cada entrada separada y legible */
+/* Publications */
 .md-typeset .pub {
   margin: 0 0 1.4em;
   padding-left: 0.9em;

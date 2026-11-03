@@ -1,5 +1,4 @@
-# Publica la web en GitHub Pages cada vez que se cambia algo en la rama main.
-name: Publicar web
+name: Deploy site
 
 on:
   push:
@@ -23,11 +22,11 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
-      - name: Instalar dependencias
+      - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Generar QR y páginas de redirección
+      - name: Generate QR codes
         run: python scripts/build_qr.py
-      - name: Construir la web
+      - name: Build site
         run: mkdocs build
       - uses: actions/upload-pages-artifact@v5
         with:

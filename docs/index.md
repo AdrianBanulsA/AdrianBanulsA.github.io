@@ -1,15 +1,15 @@
-# Adrian Banuls
+# Adrián Bañuls Arias
 
-PhD researcher at the [University of Málaga](https://www.uma.es/).
-<!-- Cambia la línea anterior por tu puesto, grupo y área de investigación. -->
+Predoctoral researcher at the [University of Málaga](https://www.uma.es/).
 
-My research focuses on **[your research area]**.
-<!-- Dos o tres frases sobre qué investigas y por qué importa. -->
+My research focuses on **reinforcement learning for mobile robots**: how to deploy
+learned policies on real hardware, how the choice of timestep affects learning, and
+time-aware navigation.
 
 ## Contact
 
-- Email: [name@uma.es](mailto:name@uma.es)
+- Email: [adrianb_arias@uma.es](mailto:adrianb_arias@uma.es)
 - GitHub: [AdrianBanulsA](https://github.com/AdrianBanulsA)
-- ORCID: [0000-0000-0000-0000](https://orcid.org/0000-0000-0000-0000)
+- ORCID: [0009-0004-8712-0431](https://orcid.org/0009-0004-8712-0431)
 
 See my [publications](publications.md).

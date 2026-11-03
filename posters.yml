@@ -1,19 +1,22 @@
-# ─────────────────────────────────────────────────────────────
-# QR de los pósteres
+# QR codes for conference posters.
 #
-# Cada entrada crea:
-#   - una página https://adrianbanulsa.github.io/qr/<slug>/ que cuenta
-#     el escaneo en GoatCounter y redirige al paper
-#   - las imágenes del QR, descargables en https://adrianbanulsa.github.io/qr/
+# Each entry gets a page at /qr/<slug>/ that counts the scan and redirects to
+# the paper. All codes can be downloaded from /qr/.
 #
-# slug:  la parte final de la URL. Solo minúsculas, números y guiones.
-#        ¡No lo cambies una vez impreso el póster!
-# doi:   el DOI del paper (vale con o sin "https://doi.org/").
-# url:   en lugar de doi, cualquier enlace (arXiv, PDF...). Usa uno de los dos.
-# title: opcional, solo para que tú lo identifiques en la lista.
-# ─────────────────────────────────────────────────────────────
+#   slug   lowercase letters, digits and hyphens. Never change it after printing.
+#   doi    paper DOI, with or without the https://doi.org/ prefix
+#   url    any other link, used instead of doi
+#   title  optional label for the /qr/ index
 
 posters:
-  - slug: ejemplo-2026
-    doi: 10.1000/182
-    title: Ejemplo (bórralo y pon tus papers)
+  - slug: spindecoupler-ja26
+    doi: 10.17979/ja-cea.2026.47.13751
+    title: Asynchronous deployment of RL software on physical systems (JA 2026)
+
+  - slug: timestep-ja26
+    doi: 10.17979/ja-cea.2026.47.13780
+    title: Analysis of the timestep in RL for mobile robots (JA 2026)
+
+  - slug: stm-cmes26
+    doi: 10.32604/cmes.2026.085976
+    title: Time-aware mobile robot navigation with Subjective Time Maps (CMES 2026)

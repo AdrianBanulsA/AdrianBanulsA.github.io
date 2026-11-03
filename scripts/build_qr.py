@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
-Genera, a partir de posters.yml:
-  - docs/qr/<slug>/index.html : página que cuenta el escaneo y redirige al paper
-  - docs/qr/<slug>/qr.png y qr.svg : el código QR (con logo si existe assets/logo.png)
-  - docs/qr/index.html : lista de todos los QR para descargarlos
+Build the poster QR codes from posters.yml.
 
-Se ejecuta automáticamente en GitHub Actions antes de construir la web.
-La carpeta docs/qr/ se regenera entera en cada ejecución: no pongas nada a mano ahí.
+For each poster it writes docs/qr/<slug>/ with:
+  index.html  redirect page that logs the scan in GoatCounter
+  qr.png      QR code for quick use
+  qr.svg      QR code for printing
+
+plus docs/qr/index.html listing all of them. docs/qr/ is wiped on every run.
 """
 
 import base64
@@ -27,17 +28,17 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs" / "qr"
 LOGO = ROOT / "assets" / "logo.png"
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-LOGO_FRACTION = 0.22  # ancho del logo respecto al QR (máx. recomendado ~0,25)
-PNG_TARGET_PX = 1400  # tamaño aproximado del PNG, suficiente para imprimir
+LOGO_FRACTION = 0.22  # logo width relative to the QR; keep below ~0.25
+PNG_TARGET_PX = 1400
 
 
 def fail(msg):
-    print(f"\n❌ Error en posters.yml: {msg}\n", file=sys.stderr)
+    print(f"posters.yml: {msg}", file=sys.stderr)
     sys.exit(1)
 
 
 class _TolerantLoader(yaml.SafeLoader):
-    """Lee mkdocs.yml aunque contenga etiquetas !!python/... de MkDocs."""
+    """SafeLoader that ignores the !!python/ tags MkDocs allows in mkdocs.yml."""
 
 
 _TolerantLoader.add_multi_constructor("tag:yaml.org,2002:python/", lambda *a: None)
@@ -47,7 +48,7 @@ def load_config():
     mk = yaml.load((ROOT / "mkdocs.yml").read_text(encoding="utf-8"), Loader=_TolerantLoader)
     site_url = (mk.get("site_url") or "").rstrip("/")
     if not site_url.startswith("http"):
-        print("❌ Falta site_url en mkdocs.yml", file=sys.stderr)
+        print("mkdocs.yml: site_url is missing", file=sys.stderr)
         sys.exit(1)
     goatcounter = ((mk.get("extra") or {}).get("goatcounter") or "").strip()
     return site_url, goatcounter
@@ -60,24 +61,24 @@ def load_posters():
     result = []
     for i, p in enumerate(posters, start=1):
         if not isinstance(p, dict):
-            fail(f"la entrada {i} no tiene el formato correcto.")
+            fail(f"entry {i} is malformed")
         slug = str(p.get("slug", "")).strip()
         if not SLUG_RE.match(slug):
-            fail(f"slug «{slug}» no válido (entrada {i}). Usa solo minúsculas, números y guiones.")
+            fail(f"invalid slug '{slug}' (entry {i}): use lowercase letters, digits and hyphens")
         if slug in seen:
-            fail(f"el slug «{slug}» está repetido.")
+            fail(f"duplicate slug '{slug}'")
         seen.add(slug)
 
         doi, url = p.get("doi"), p.get("url")
         if bool(doi) == bool(url):
-            fail(f"«{slug}» debe tener doi o url (solo uno de los dos).")
+            fail(f"'{slug}' needs exactly one of doi or url")
         if doi:
             doi = re.sub(r"^(https?://(dx\.)?doi\.org/|doi:)", "", str(doi).strip(), flags=re.I)
             target = f"https://doi.org/{doi}"
         else:
             target = str(url).strip()
             if not target.startswith(("https://", "http://")):
-                fail(f"la url de «{slug}» debe empezar por https://")
+                fail(f"url for '{slug}' must start with https://")
         result.append({"slug": slug, "target": target, "title": str(p.get("title") or slug)})
     return result
 
@@ -85,23 +86,22 @@ def load_posters():
 def redirect_page(slug, target, goatcounter):
     t_attr = html.escape(target, quote=True)
     t_js = json.dumps(target)
-    counter = ""
     if goatcounter:
         counter = (
             f'<script data-goatcounter="https://{html.escape(goatcounter)}.goatcounter.com/count"\n'
             "        data-goatcounter-settings='{\"no_onload\": true}'\n"
             '        async src="https://gc.zgo.at/count.js"\n'
-            '        onload="contar()" onerror="ir()"></script>'
+            '        onload="track()" onerror="go()"></script>'
         )
     else:
-        counter = "<script>ir();</script>"
+        counter = "<script>go();</script>"
     return f"""<!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Abriendo el paper…</title>
+<title>Opening paper…</title>
 <link rel="canonical" href="{t_attr}">
 <noscript><meta http-equiv="refresh" content="0; url={t_attr}"></noscript>
 <style>
@@ -111,16 +111,16 @@ def redirect_page(slug, target, goatcounter):
 </style>
 </head>
 <body>
-<p>Abriendo el paper… Si no se abre, <a href="{t_attr}">pulsa aquí</a>.</p>
+<p>Opening the paper… If nothing happens, <a href="{t_attr}">click here</a>.</p>
 <script>
-  var DESTINO = {t_js};
-  var hecho = false;
-  function ir() {{ if (!hecho) {{ hecho = true; location.replace(DESTINO); }} }}
-  function contar() {{
+  var TARGET = {t_js};
+  var done = false;
+  function go() {{ if (!done) {{ done = true; location.replace(TARGET); }} }}
+  function track() {{
     try {{ window.goatcounter.count({{ path: "/qr/{slug}/", title: "QR {slug}" }}); }} catch (e) {{}}
-    setTimeout(ir, 500);
+    setTimeout(go, 500);
   }}
-  setTimeout(ir, 3000); // si la analítica tarda o está bloqueada, redirige igual
+  setTimeout(go, 3000); // redirect anyway if analytics is slow or blocked
 </script>
 {counter}
 </body>
@@ -139,7 +139,7 @@ def make_qr(data, with_logo):
 
 
 def logo_with_padding(size_px):
-    """Logo escalado sobre un recuadro blanco, listo para pegar en el centro."""
+    """Scaled logo on a white box, ready to paste in the centre of the QR."""
     pad = max(2, size_px // 10)
     logo = Image.open(LOGO).convert("RGBA")
     logo.thumbnail((size_px - 2 * pad, size_px - 2 * pad), Image.LANCZOS)
@@ -160,7 +160,7 @@ def write_png(qr, path, with_logo):
 
 def write_svg(qr, path, with_logo):
     svg = qr.make_image(image_factory=qrcode.image.svg.SvgPathImage).to_string(encoding="unicode")
-    n = float(re.search(r'viewBox="0 0 ([\d.]+)', svg).group(1))  # tamaño en unidades del SVG
+    n = float(re.search(r'viewBox="0 0 ([\d.]+)', svg).group(1))
     head_end = svg.index(">") + 1
     background = f'<rect width="{n:g}" height="{n:g}" fill="#fff"/>'
     svg = svg[:head_end] + background + svg[head_end:]
@@ -183,24 +183,24 @@ def write_svg(qr, path, with_logo):
 def index_page(posters, site_url):
     rows = "\n".join(
         f"""  <li>
-    <img src="{p['slug']}/qr.png" alt="QR de {html.escape(p['title'])}" width="160" height="160">
+    <img src="{p['slug']}/qr.png" alt="QR code for {html.escape(p['title'])}" width="160" height="160">
     <div>
       <strong>{html.escape(p['title'])}</strong>
-      <p>El QR abre <code>{html.escape(site_url)}/qr/{p['slug']}/</code><br>
-         y redirige a <a href="{html.escape(p['target'], quote=True)}">{html.escape(p['target'])}</a></p>
-      <p><a href="{p['slug']}/qr.svg" download="qr-{p['slug']}.svg">Descargar SVG (para imprimir)</a>
-         <a href="{p['slug']}/qr.png" download="qr-{p['slug']}.png">Descargar PNG</a></p>
+      <p>Opens <code>{html.escape(site_url)}/qr/{p['slug']}/</code><br>
+         and redirects to <a href="{html.escape(p['target'], quote=True)}">{html.escape(p['target'])}</a></p>
+      <p><a href="{p['slug']}/qr.svg" download="qr-{p['slug']}.svg">SVG (print)</a>
+         <a href="{p['slug']}/qr.png" download="qr-{p['slug']}.png">PNG</a></p>
     </div>
   </li>"""
         for p in posters
     )
     return f"""<!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Códigos QR de los pósteres</title>
+<title>Poster QR codes</title>
 <style>
   body {{ font-family: system-ui, sans-serif; max-width: 52rem; margin: 2rem auto; padding: 0 1rem;
          color: #1a2a30; line-height: 1.5; }}
@@ -215,8 +215,8 @@ def index_page(posters, site_url):
 </style>
 </head>
 <body>
-<h1>Códigos QR de los pósteres</h1>
-<p>Para el póster usa el SVG: se imprime nítido a cualquier tamaño. Las visitas de cada QR aparecen en GoatCounter como <code>/qr/…/</code>.</p>
+<h1>Poster QR codes</h1>
+<p>Scans show up in GoatCounter under <code>/qr/…/</code>.</p>
 <ul>
 {rows}
 </ul>
@@ -241,12 +241,12 @@ def main():
         qr = make_qr(f"{site_url}/qr/{p['slug']}/", with_logo)
         write_png(qr, d / "qr.png", with_logo)
         write_svg(qr, d / "qr.svg", with_logo)
-        print(f"✓ /qr/{p['slug']}/ → {p['target']}")
+        print(f"/qr/{p['slug']}/ -> {p['target']}")
 
     (OUT / "index.html").write_text(index_page(posters, site_url), encoding="utf-8")
-    print(f"\n{len(posters)} QR generados" + (" con logo." if with_logo else " (sin logo: no hay assets/logo.png)."))
+    print(f"{len(posters)} QR codes written" + (" (with logo)" if with_logo else ""))
     if not goatcounter:
-        print("Aviso: goatcounter está vacío en mkdocs.yml, así que los escaneos no se cuentan todavía.")
+        print("warning: extra.goatcounter is empty in mkdocs.yml, scans will not be counted")
 
 
 if __name__ == "__main__":
