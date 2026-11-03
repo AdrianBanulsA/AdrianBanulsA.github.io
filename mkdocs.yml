@@ -1,0 +1,51 @@
+site_name: Adrian Banuls
+site_url: https://adrianbanulsa.github.io/
+site_description: Research, publications and code.
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  font:
+    text: IBM Plex Sans
+    code: IBM Plex Mono
+  features:
+    - navigation.tabs
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - About: index.md
+  - Publications: publications.md
+
+extra:
+  # Tu código de GoatCounter (la parte "xxx" de xxx.goatcounter.com).
+  # Déjalo vacío ("") para desactivar la analítica.
+  goatcounter: ""
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/AdrianBanulsA
+    - icon: fontawesome/brands/orcid
+      link: https://orcid.org/0000-0000-0000-0000
+    - icon: fontawesome/brands/google-scholar
+      link: https://scholar.google.com/
+
+markdown_extensions:
+  - attr_list
+  - md_in_html

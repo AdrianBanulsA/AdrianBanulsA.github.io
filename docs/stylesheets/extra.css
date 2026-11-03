@@ -1,0 +1,27 @@
+/* Paleta propia: azul petróleo sobrio con acento ámbar */
+:root,
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #1f4a5a;
+  --md-primary-fg-color--light: #2e6578;
+  --md-primary-fg-color--dark: #153541;
+  --md-accent-fg-color: #b7791f;
+  --md-typeset-a-color: #1f5f75;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #1f4a5a;
+  --md-primary-fg-color--light: #2e6578;
+  --md-primary-fg-color--dark: #153541;
+  --md-accent-fg-color: #e0a54a;
+  --md-typeset-a-color: #7cc0d6;
+}
+
+/* Lista de publicaciones: cada entrada separada y legible */
+.md-typeset .pub {
+  margin: 0 0 1.4em;
+  padding-left: 0.9em;
+  border-left: 3px solid var(--md-primary-fg-color--light);
+}
+.md-typeset .pub p { margin: 0.15em 0; }
+.md-typeset .pub-venue { color: var(--md-default-fg-color--light); }
+.md-typeset .pub-links a { margin-right: 0.9em; }

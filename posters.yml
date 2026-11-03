@@ -1,0 +1,19 @@
+# ─────────────────────────────────────────────────────────────
+# QR de los pósteres
+#
+# Cada entrada crea:
+#   - una página https://adrianbanulsa.github.io/qr/<slug>/ que cuenta
+#     el escaneo en GoatCounter y redirige al paper
+#   - las imágenes del QR, descargables en https://adrianbanulsa.github.io/qr/
+#
+# slug:  la parte final de la URL. Solo minúsculas, números y guiones.
+#        ¡No lo cambies una vez impreso el póster!
+# doi:   el DOI del paper (vale con o sin "https://doi.org/").
+# url:   en lugar de doi, cualquier enlace (arXiv, PDF...). Usa uno de los dos.
+# title: opcional, solo para que tú lo identifiques en la lista.
+# ─────────────────────────────────────────────────────────────
+
+posters:
+  - slug: ejemplo-2026
+    doi: 10.1000/182
+    title: Ejemplo (bórralo y pon tus papers)
