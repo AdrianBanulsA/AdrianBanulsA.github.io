@@ -111,7 +111,7 @@ def redirect_page(slug, target, goatcounter):
 </style>
 </head>
 <body>
-<p>Opening the paper… If nothing happens, <a href="{t_attr}">click here</a>.</p>
+<p>Opening the paper, please wait… If nothing happens after a few seconds, <a href="{t_attr}">click here</a>.</p>
 <script>
   var TARGET = {t_js};
   var done = false;
