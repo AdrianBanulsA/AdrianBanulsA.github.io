@@ -16,6 +16,21 @@
   --md-typeset-a-color: #7cc0d6;
 }
 
+/* About */
+.md-typeset .profile-photo {
+  float: right;
+  width: 180px;
+  margin: 0 0 1em 1.5em;
+  border-radius: 50%;
+}
+@media (max-width: 600px) {
+  .md-typeset .profile-photo {
+    float: none;
+    display: block;
+    margin: 0 auto 1em;
+  }
+}
+
 /* Publications */
 .md-typeset .pub {
   margin: 0 0 1.4em;

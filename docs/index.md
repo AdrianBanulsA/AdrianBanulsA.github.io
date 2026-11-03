@@ -1,4 +1,11 @@
+---
+hide:
+  - navigation
+---
+
 # Adrián Bañuls Arias
+
+![Adrián Bañuls Arias](img/profile.jpg){ .profile-photo }
 
 Predoctoral researcher at the [University of Málaga](https://www.uma.es/).
 
