@@ -172,10 +172,12 @@ def write_svg(qr, path, with_logo):
         w = n * LOGO_FRACTION * (box.width / max(box.width, box.height))
         h = n * LOGO_FRACTION * (box.height / max(box.width, box.height))
         x, y = (n - w) / 2, (n - h) / 2
+        # xlink:href rather than href: Inkscape 0.92, PowerPoint and librsvg ignore the latter
+        svg = svg.replace("<svg ", '<svg xmlns:xlink="http://www.w3.org/1999/xlink" ', 1)
         svg = svg.replace(
             "</svg>",
             f'<image x="{x:.3f}" y="{y:.3f}" width="{w:.3f}" height="{h:.3f}" '
-            f'href="data:image/png;base64,{b64}"/></svg>',
+            f'xlink:href="data:image/png;base64,{b64}"/></svg>',
         )
     path.write_text(svg, encoding="utf-8")
 
