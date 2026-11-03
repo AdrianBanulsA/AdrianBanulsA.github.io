@@ -35,9 +35,8 @@ nav:
   - Publications: publications.md
 
 extra:
-  # Tu código de GoatCounter (la parte "xxx" de xxx.goatcounter.com).
-  # Déjalo vacío ("") para desactivar la analítica.
-  goatcounter: ""
+  # For analytics via Goatcounter
+  goatcounter: "adrianbanuls"
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/AdrianBanulsA
