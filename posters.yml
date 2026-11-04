@@ -6,7 +6,7 @@
 #   slug   lowercase letters, digits and hyphens. Never change it after printing.
 #   doi    paper DOI, with or without the https://doi.org/ prefix
 #   url    any other link, used instead of doi
-#   title  optional label for the /qr/ index
+#   title  optional label for the /qr/ index and the README scans table
 
 posters:
   - slug: spindecoupler-ja26
@@ -20,3 +20,11 @@ posters:
   - slug: stm-cmes26
     doi: 10.32604/cmes.2026.085976
     title: Time-aware mobile robot navigation with Subjective Time Maps (CMES 2026)
+
+  - slug: rtt-sensors25
+    doi: 10.3390/s25175413
+    title: Goodness of fit in the modeling of round-trip times for networked robot sensors (Sensors 2025)
+
+  - slug: thermal-ssrr20
+    doi: 10.1109/SSRR50563.2020.9292593
+    title: Object detection from thermal infrared and visible cameras in search and rescue (SSRR 2020)

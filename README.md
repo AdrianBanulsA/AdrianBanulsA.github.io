@@ -4,9 +4,10 @@ Source for my personal website, <https://adrianbanulsa.github.io/>, built with
 [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) and deployed
 with GitHub Actions on every push to `main`.
 
-It also hosts the QR codes I put on conference posters. Each code points to
-`/qr/<slug>/`, which logs the scan in [GoatCounter](https://www.goatcounter.com/)
-and then redirects to the paper.
+It also hosts the QR codes I put on conference posters and talks. I got tired of online QR generators, so I made my own 🛠️.
+
+Each code points to `/qr/<slug>/`, which logs the scan in
+[GoatCounter](https://www.goatcounter.com/) and then redirects to the paper.
 
 ## Poster scans
 
@@ -17,7 +18,6 @@ and then redirects to the paper.
 | [Analysis of the timestep in RL for mobile robots (JA 2026)](https://doi.org/10.17979/ja-cea.2026.47.13780) | 0 |
 | [Time-aware mobile robot navigation with Subjective Time Maps (CMES 2026)](https://doi.org/10.32604/cmes.2026.085976) | 2 |
 <!-- scans:end -->
-
 Unique visitors according to GoatCounter, updated every 6 hours by
 `scripts/update_scans.py`.
 
