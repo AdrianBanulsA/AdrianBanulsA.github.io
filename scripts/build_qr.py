@@ -190,8 +190,8 @@ def index_page(posters, site_url):
       <strong>{html.escape(p['title'])}</strong>
       <p>Opens <code>{html.escape(site_url)}/qr/{p['slug']}/</code><br>
          and redirects to <a href="{html.escape(p['target'], quote=True)}">{html.escape(p['target'])}</a></p>
-      <p><a href="{p['slug']}/qr.svg" download="qr-{p['slug']}.svg">SVG (print)</a>
-         <a href="{p['slug']}/qr.png" download="qr-{p['slug']}.png">PNG</a></p>
+      <p><a class="qr-download" href="{p['slug']}/qr.svg" download="qr-{p['slug']}.svg">SVG (print)</a>
+         <a class="qr-download" href="{p['slug']}/qr.png" download="qr-{p['slug']}.png">PNG</a></p>
     </div>
   </li>"""
         for p in posters
@@ -222,6 +222,7 @@ def index_page(posters, site_url):
 <ul>
 {rows}
 </ul>
+<script src="../javascripts/qr-download.js"></script>
 </body>
 </html>
 """

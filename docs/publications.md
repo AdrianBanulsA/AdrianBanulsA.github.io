@@ -16,7 +16,7 @@ A. Bañuls-Arias, C. Galindo, A. Cruz-Martín, M. Castellano-Quero, J. M. Gandar
 
 <span class="pub-venue">*Computer Modeling in Engineering & Sciences*, vol. 148, no. 1, 2026</span>
 
-<span class="pub-links">[DOI](https://doi.org/10.32604/cmes.2026.085976)</span>
+<span class="pub-links">[DOI](https://doi.org/10.32604/cmes.2026.085976) [QR](qr/stm-cmes26/qr.svg){ .qr-download download="qr-stm-cmes26.svg" }</span>
 </div>
 
 <div class="pub" markdown>
@@ -26,7 +26,7 @@ A. Bañuls-Arias, D. Caruana-Montes, A. Cruz-Martín, V. Arévalo-Espejo, C. Gal
 
 <span class="pub-venue">*XLVII Jornadas de Automática*, 2026</span>
 
-<span class="pub-links">[DOI](https://doi.org/10.17979/ja-cea.2026.47.13751) [Code](https://github.com/uncore-team/rl_spin_decoupler)</span>
+<span class="pub-links">[DOI](https://doi.org/10.17979/ja-cea.2026.47.13751) [Code](https://github.com/uncore-team/rl_spin_decoupler) [QR](qr/spindecoupler-ja26/qr.svg){ .qr-download download="qr-spindecoupler-ja26.svg" }</span>
 </div>
 
 <div class="pub" markdown>
@@ -36,7 +36,7 @@ A. Bañuls-Arias, J. A. Fernández-Madrigal, A. Cruz-Martín, V. Arévalo-Espejo
 
 <span class="pub-venue">*XLVII Jornadas de Automática*, 2026</span>
 
-<span class="pub-links">[DOI](https://doi.org/10.17979/ja-cea.2026.47.13780)</span>
+<span class="pub-links">[DOI](https://doi.org/10.17979/ja-cea.2026.47.13780) [QR](qr/timestep-ja26/qr.svg){ .qr-download download="qr-timestep-ja26.svg" }</span>
 </div>
 
 ## 2025

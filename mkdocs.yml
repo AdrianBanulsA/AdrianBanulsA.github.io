@@ -33,6 +33,9 @@ theme:
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/qr-download.js
+
 nav:
   - About: index.md
   - Publications: publications.md
