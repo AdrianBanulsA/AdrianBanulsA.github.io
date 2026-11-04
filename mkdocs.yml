@@ -1,11 +1,14 @@
 site_name: Adrián Bañuls Arias
 site_url: https://adrianbanulsa.github.io/
 site_description: Research, publications and code.
+copyright: © 2026 Adrián Bañuls Arias
 
 theme:
   name: material
   custom_dir: overrides
   language: en
+  logo: img/personal-logo.png
+  favicon: img/favicon.png
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
