@@ -1,6 +1,6 @@
 site_name: Adrián Bañuls Arias
 site_url: https://adrianbanulsa.github.io/
-site_description: Research, publications and code.
+site_description: Adrián Bañuls Arias, predoctoral researcher at the University of Málaga working on reinforcement learning for mobile robots.
 copyright: © 2026 Adrián Bañuls Arias
 
 theme:
@@ -32,9 +32,6 @@ theme:
 
 extra_css:
   - stylesheets/extra.css
-
-extra_javascript:
-  - javascripts/qr-download.js
 
 nav:
   - About: index.md

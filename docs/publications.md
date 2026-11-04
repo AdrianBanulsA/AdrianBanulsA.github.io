@@ -16,7 +16,10 @@ A. Bañuls-Arias, C. Galindo, A. Cruz-Martín, M. Castellano-Quero, J. M. Gandar
 
 <span class="pub-venue">*Computer Modeling in Engineering & Sciences*, vol. 148, no. 1, 2026</span>
 
-<span class="pub-links">[DOI](https://doi.org/10.32604/cmes.2026.085976) [QR](qr/stm-cmes26/qr.svg){ .qr-download download="qr-stm-cmes26.svg" }</span>
+<span class="pub-links">[DOI](https://doi.org/10.32604/cmes.2026.085976)</span>
+
+A deep RL navigation policy that chooses both the motion command and how long each step lasts. Trained in a minimal environment, it carries over to new scenarios as Subjective Time Maps of the robot–world interaction.
+{ .pub-summary }
 </div>
 
 <div class="pub" markdown>
@@ -26,7 +29,10 @@ A. Bañuls-Arias, D. Caruana-Montes, A. Cruz-Martín, V. Arévalo-Espejo, C. Gal
 
 <span class="pub-venue">*XLVII Jornadas de Automática*, 2026</span>
 
-<span class="pub-links">[DOI](https://doi.org/10.17979/ja-cea.2026.47.13751) [Code](https://github.com/uncore-team/rl_spin_decoupler) [QR](qr/spindecoupler-ja26/qr.svg){ .qr-download download="qr-spindecoupler-ja26.svg" }</span>
+<span class="pub-links">[DOI](https://doi.org/10.17979/ja-cea.2026.47.13751) [Code](https://github.com/uncore-team/rl_spin_decoupler)</span>
+
+A tool that runs the RL algorithm and the agent in separate, asynchronous loops, so that time-aware RL can be deployed on physical robots and closed-source simulators. Tested on a Franka Emika Panda arm.
+{ .pub-summary }
 </div>
 
 <div class="pub" markdown>
@@ -36,7 +42,10 @@ A. Bañuls-Arias, J. A. Fernández-Madrigal, A. Cruz-Martín, V. Arévalo-Espejo
 
 <span class="pub-venue">*XLVII Jornadas de Automática*, 2026</span>
 
-<span class="pub-links">[DOI](https://doi.org/10.17979/ja-cea.2026.47.13780) [QR](qr/timestep-ja26/qr.svg){ .qr-download download="qr-timestep-ja26.svg" }</span>
+<span class="pub-links">[DOI](https://doi.org/10.17979/ja-cea.2026.47.13780)</span>
+
+A set of mobile robot navigation tasks designed to measure how the timestep duration affects deep RL, run over more than 2000 hours of simulation. There are optimal step times that maximize both learning efficiency and task completion.
+{ .pub-summary }
 </div>
 
 ## 2025
@@ -49,6 +58,9 @@ J. A. Fernández-Madrigal, V. Arévalo-Espejo, A. Cruz-Martín, C. Galindo, A. B
 <span class="pub-venue">*Sensors*, vol. 25, no. 17, art. 5413, 2025</span>
 
 <span class="pub-links">[DOI](https://doi.org/10.3390/s25175413)</span>
+
+Hypothesis tests for modeling the round-trip times of remotely operated robots with Log-logistic, Log-normal and Exponential distributions, including modified parameter estimators and new thresholds for well-known goodness-of-fit tests.
+{ .pub-summary }
 </div>
 
 ## 2020
@@ -61,4 +73,7 @@ A. Bañuls, A. Mandow, R. Vázquez-Martín, J. Morales, A. García-Cerezo
 <span class="pub-venue">*IEEE International Symposium on Safety, Security, and Rescue Robotics (SSRR)*, pp. 380–386, 2020</span>
 
 <span class="pub-links">[DOI](https://doi.org/10.1109/SSRR50563.2020.9292593)</span>
+
+Two YOLOv3 detectors, one trained on thermal infrared images and one on visible light images, compared on video recorded from a vehicle during realistic search and rescue exercises with first responders.
+{ .pub-summary }
 </div>

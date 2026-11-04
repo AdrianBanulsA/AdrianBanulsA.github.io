@@ -40,3 +40,4 @@
 .md-typeset .pub p { margin: 0.15em 0; }
 .md-typeset .pub-venue { color: var(--md-default-fg-color--light); }
 .md-typeset .pub-links a { margin-right: 0.9em; }
+.md-typeset .pub .pub-summary { margin-top: 0.5em; }
