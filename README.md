@@ -17,6 +17,8 @@ Each code points to `/qr/<slug>/`, which logs the scan in
 | [Asynchronous deployment of RL software on physical systems (JA 2026)](https://doi.org/10.17979/ja-cea.2026.47.13751) | 1 |
 | [Analysis of the timestep in RL for mobile robots (JA 2026)](https://doi.org/10.17979/ja-cea.2026.47.13780) | 0 |
 | [Time-aware mobile robot navigation with Subjective Time Maps (CMES 2026)](https://doi.org/10.32604/cmes.2026.085976) | 2 |
+| [Goodness of fit in the modeling of round-trip times for networked robot sensors (Sensors 2025)](https://doi.org/10.3390/s25175413) | 0 |
+| [Object detection from thermal infrared and visible cameras in search and rescue (SSRR 2020)](https://doi.org/10.1109/SSRR50563.2020.9292593) | 0 |
 <!-- scans:end -->
 Unique visitors according to GoatCounter, updated every 6 hours by
 `scripts/update_scans.py`.
